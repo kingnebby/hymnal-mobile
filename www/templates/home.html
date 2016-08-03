@@ -1,13 +1,13 @@
-<ion-view title="Home" hide-nav-bar="true" id="page1" style="background-color:#7AA1DA;" class=" ">
-    <ion-content padding="true" style="background: url(img/elGdYV4aREBWKyvRt3ag_images.jpg) no-repeat center;background-size:cover;" class="manual-ios-statusbar-padding">
+<ion-view title="Home" hide-nav-bar="true" id="page1" style="background-color:#201D22;" class=" ">
+    <ion-content padding="true" class="manual-ios-statusbar-padding">
         <form id="home-form1" class="list ">
             <label class="item item-input" name="search">
                 <i class="icon ion-search placeholder-icon"></i>
-                <input type="search" ng-model="form.search" placeholder="Hymn name or number">
+                <input type="search" placeholder="Search hymns" ng-model='form.search'>
             </label>
         </form>
         <ion-list id="home-list4" class=" ">
-            <ion-item ng-repeat="file in docs" ui-sref="hymn({id: file._id})" class="  ">{{file.hymn_number}}: {{file.title}}</ion-item>
+            <ion-item ng-repeat="file in docs" ui-sref="hymn({id: file._id})">{{file.hymn_number}}: {{file.title}}</ion-item>
         </ion-list>
     </ion-content>
 </ion-view>

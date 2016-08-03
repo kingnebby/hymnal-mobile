@@ -1,0 +1,5 @@
+{
+  "name": "hymnal-app",
+  "app_id": "",
+  "gulpStartupTasks": ["sass", "watch"]
+}
