@@ -1,0 +1,5 @@
+.bowerrc
+.editorconfig
+ionic.project
+plugins/
+www/lib/ionic/
