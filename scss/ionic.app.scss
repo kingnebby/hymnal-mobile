@@ -1,6 +1,6 @@
 $royal: #201D22;
 $ionicons-font-path: "../lib/ionic/fonts" !default;
-@import "./scss";
+@import "../www/lib/ionic/scss/ionic";
 ion-view,.pane,.view {
 	background-color: #FDFDFD;
 }
