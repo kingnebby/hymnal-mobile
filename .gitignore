@@ -3,3 +3,6 @@
 plugins/
 www/lib/ionic/
 node_modules/
+platforms/
+resources/ios/
+resources/android/
