@@ -1,8 +1,18 @@
+const api_base_url = 'http://hymnal-api.kingnebby.com/hymn'
+const api_search_path = '?keyword='
+const api_id_path = '/'
+
 angular.module('app.controllers', [])
 
 .controller('homeCtrl', function($scope, $http, BlankService) {
   $scope.form = {
     search: undefined
+  }
+  // Got errors with this http://stackoverflow.com/questions/37367200/deferred-long-running-timer-tasks-to-improve-scrolling-smoothness
+  const search_delay = 500
+
+  var errHandler = function(res) {
+    console.error("Server Response: " + res.statusText + " Status Code: " + res.status)
   }
 
   $scope.docs = []
@@ -10,12 +20,24 @@ angular.module('app.controllers', [])
   var timeout
   $scope.$watch('form.search', function(n, o, s) {
     clearTimeout(timeout)
+    // TODO: If number, search only on hymn numbers. !isNaN(Number(n)) -- should be server option.
+    // TODO: insert regexs between spaces to account for punctuation? -- should be server option.
+    // TODO: sort on number. - should be server default.
     if (n) {
       timeout = setTimeout(function() {
-        $http.get('http://localhost:8000/search?keyword=' + n).then(function(res) {
-          $scope.docs = res.data.results
-        })
-      }, 200)
+        $http.get(api_base_url + api_search_path + n).then(function(res) {
+          if (res && res.data && res.data.results) {
+            var ret = res.data.results.sort(function(a,b) {
+              return Number(a.hymn_number) - Number(b.hymn_number)
+            })
+            ret = _.filter(ret, function(el) {
+              return el.hymn_number.match(n)
+            })
+            // console.log("Result count: " + res.data.results.length)
+            $scope.docs = res.data.results
+          }
+        }, errHandler)
+      }, search_delay)
     } else {
       $scope.docs = []
     }
@@ -24,7 +46,10 @@ angular.module('app.controllers', [])
 })
 
 .controller('hymnCtrl', function($scope, $stateParams, $http) {
-  $http.get('http://localhost:8000/hymn/' + $stateParams.id).then(function(res) {
-    $scope.hymn = res.data.results[0]
-  })
+  var errHandler = function(res) {
+    console.error("Server Response: " + res.statusText + " Status Code: " + res.status)
+  }
+  $http.get(api_base_url + api_id_path + $stateParams.id).then(function(res) {
+    $scope.hymn = res.data.results
+  }, errHandler)
 })

@@ -1,7 +1,7 @@
 {
   "name": "hymnal-app",
   "version": "1.1.1",
-  "description": "hymnal-app: An Ionic project",
+  "description": "An Ionic app to view Christian hymns.",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^2.0.4",
