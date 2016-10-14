@@ -1,13 +1,36 @@
 <ion-view title="Home" hide-nav-bar="true" id="page1" style="background-color:#201D22;" class=" ">
     <ion-content padding="true" class="manual-ios-statusbar-padding">
+        <!-- Header -->
         <form id="home-form1" class="list ">
             <label class="item item-input" name="search">
                 <i class="icon ion-search placeholder-icon"></i>
                 <input type="search" placeholder="Search hymns" ng-model='form.search'>
             </label>
         </form>
+
+        <!-- Main Content -->
         <ion-list id="home-list4" class=" ">
             <ion-item ng-repeat="file in docs" ui-sref="hymn({id: file._id})">{{file.hymn_number}}: {{file.title}}</ion-item>
         </ion-list>
+
+        <!-- Info Pop Up-->
+        <script id="my-modal.html" type="text/ng-template">
+            <div class="bar bar-header ">
+                <h1 class="title">Hymnal App Info</h1>
+            </div>
+            <br>
+            <p>
+                Hey thanks for using the app! Shoot me an email with any questions you might have. <br>
+                - <a href="#" onclick="window.open('http//www.kingnebby.com', '_system', 'location=yes'); return false;">Dan Villa</a><br>
+            </p>
+            <p>
+                danielavilla02@gmail.com
+            </p>
+            <button ng-click="closeInfo()" class="button button-dark button-block">Done</button>
+        </script>
     </ion-content>
+
+    <div class="bar bar-footer bar-dark">
+        <a class="pull-right button button-icon icon ion-help-circled" ng-click="showInfo()"></a>
+    </div>
 </ion-view>

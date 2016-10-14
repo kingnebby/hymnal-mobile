@@ -1,17 +1,10 @@
 <ion-view title="Hymn" hide-nav-bar="true" hide-back-button="true" id="page2" style="background-color:#FFFFFF;" class=" ">
-    <ion-content padding="true" class="manual-ios-statusbar-padding">
-        <div id="hymn-button-bar2" class=" button-bar ">
-            <div style="margin-right:-20px;">
-                <a ui-sref="home" id="hymn-button6" style="left:-10px;" class=" button button-royal  button-full icon ion-android-arrow-back "></a>
-            </div>
-            <button id="hymn-button8" class=" button button-royal  button-block ">{{hymn.title}}</button>
-            <div style="margin-right:-20px;">
-                <button id="hymn-button9" style="left:-10px;" class=" button button-royal  button-full "></button>
-            </div>
-        </div>
-        <div>
-            <p style="white-space: pre; text-align:center;">{{hymn.lyrics}}
-            </p>
-        </div>
+    <div id="hymn-button-bar2" class="bar bar-header bar-royal">
+        <a ui-sref="home" id="hymn-button6" class="pull-left button button-royal button-icon icon ion-android-arrow-back"></a>
+        <h1 class="title">{{hymn.hymn_number}}</h1>
+    </div>
+    <ion-content padding="true" class="has-header">
+        <h4 class="text-center">{{hymn.title}}</h4>
+        <p style="white-space: pre; text-align:center;">{{hymn.lyrics}}</p>
     </ion-content>
 </ion-view>

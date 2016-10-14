@@ -2,9 +2,24 @@ const api_base_url = 'http://hymnal-api.kingnebby.com/hymn'
 const api_search_path = '?keyword='
 const api_id_path = '/'
 
-angular.module('app.controllers', [])
+angular.module('app.controllers', ['ionic'])
 
-.controller('homeCtrl', function($scope, $http, BlankService) {
+// The Home Controller! Searches stuff and provides a help button.
+.controller('homeCtrl', function($scope, $http, $ionicPopup) {
+
+  var options = {
+    scope: $scope,
+    templateUrl: 'my-modal.html',
+  }
+
+  var poppy
+  $scope.showInfo = function () {
+    poppy = $ionicPopup.show(options)
+  }
+  $scope.closeInfo = function () {
+    poppy.close()
+  }
+
   $scope.form = {
     search: undefined
   }
@@ -17,8 +32,16 @@ angular.module('app.controllers', [])
 
   $scope.docs = []
 
+  $scope.search = function (e) {
+    console.log(e)
+  }
+
   var timeout
-  $scope.$watch('form.search', function(n, o, s) {
+  // var handleSearchChange
+
+  $scope.$watch('form.search', handleSearchChange)
+
+ function handleSearchChange (n, o, s) {
     clearTimeout(timeout)
     // TODO: If number, search only on hymn numbers. !isNaN(Number(n)) -- should be server option.
     // TODO: insert regexs between spaces to account for punctuation? -- should be server option.
@@ -41,8 +64,7 @@ angular.module('app.controllers', [])
     } else {
       $scope.docs = []
     }
-  })
-
+  }
 })
 
 .controller('hymnCtrl', function($scope, $stateParams, $http) {
