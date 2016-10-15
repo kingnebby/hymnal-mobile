@@ -8,6 +8,11 @@
             </label>
         </form>
 
+        <div class="text-center">
+            <p class="stable" ng-show="searching">{{searching}}</p>
+            <ion-spinner icon="spiral" ng-show="loading"></ion-spinner>
+        </div>
+
         <!-- Main Content -->
         <ion-list id="home-list4" class=" ">
             <ion-item ng-repeat="file in docs" ui-sref="hymn({id: file._id})">{{file.hymn_number}}: {{file.title}}</ion-item>
@@ -23,7 +28,7 @@
                 Hey thanks for using the app! Shoot me an email with any questions you might have. <br>
                 - <a href="#" onclick="window.open('http//www.kingnebby.com', '_system', 'location=yes'); return false;">Dan Villa</a><br>
             </p>
-            <p>
+            <p class="selectable">
                 danielavilla02@gmail.com
             </p>
             <button ng-click="closeInfo()" class="button button-dark button-block">Done</button>
