@@ -1,5 +1,5 @@
 <ion-view title="Home" hide-nav-bar="true" id="page1" style="background-color:#201D22;" class=" ">
-    <ion-content padding="true" class="manual-ios-statusbar-padding">
+    <ion-content padding="true" class="manual-ios-statusbar-padding" ng-class="{'has-footer': !keyboardOpen}">
         <!-- Header -->
         <form id="home-form1" class="list ">
             <label class="item item-input" name="search">
@@ -35,7 +35,7 @@
         </script>
     </ion-content>
 
-    <div class="bar bar-footer bar-dark">
+    <div class="bar bar-footer bar-dark" ng-hide="keyboardOpen">
         <a class="pull-right button button-icon icon ion-help-circled" ng-click="showInfo()"></a>
     </div>
 </ion-view>
