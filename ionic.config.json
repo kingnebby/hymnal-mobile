@@ -1,5 +1,5 @@
 {
-  "name": "hymnal-app",
+  "name": "trinity-hymnal",
   "app_id": "",
   "gulpStartupTasks": [
     "sass",

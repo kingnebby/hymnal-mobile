@@ -7,3 +7,5 @@ platforms/
 resources/ios/
 resources/android/
 www/lib/
+*.apk
+*.keystore
