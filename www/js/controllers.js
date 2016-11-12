@@ -33,8 +33,10 @@ angular.module('app.controllers', ['ionic'])
       } else {
         console.error(res)
       }
+      $scope.searching = "Hm... double check your internet connection."
     } else {
       console.error(new Error('Unknown exception.'))
+      $scope.searching = "Ut oh, the app has a moth stuck inside, please report the bug."
     }
   }
 
@@ -147,6 +149,7 @@ angular.module('app.controllers', ['ionic'])
     }
   }
 
+  // Deals with hiding the footer when the keyboard is in use.
   window.addEventListener('native.keyboardhide', keyboardHideHandler);
 
   $scope.keyboardOpen = false
@@ -163,6 +166,7 @@ angular.module('app.controllers', ['ionic'])
     $scope.$apply()
   }
 
+  // Ensure we clean up after ourselves.
   $scope.$on('$destroy', function() {
     window.removeEventListener('native.keyboardshow', keyboardShowHandler);
     window.removeEventListener('native.keyboardhide', keyboardHideHandler);

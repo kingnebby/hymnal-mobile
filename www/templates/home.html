@@ -4,7 +4,7 @@
         <form id="home-form1" class="list ">
             <label class="item item-input" name="search">
                 <i class="icon ion-search placeholder-icon"></i>
-                <input type="search" placeholder="Search hymns" ng-model='form.search'>
+                <input type="search" placeholder="Type to search hymns" ng-model='form.search'>
             </label>
         </form>
 
@@ -14,7 +14,7 @@
         </div>
 
         <!-- Main Content -->
-        <ion-list id="home-list4" class=" ">
+        <ion-list ng-show="docs.length" id="home-list4" class=" ">
             <ion-item ng-repeat="file in docs" ui-sref="hymn({id: file._id})">{{file.hymn_number}}: {{file.title}}</ion-item>
         </ion-list>
 
