@@ -13,6 +13,7 @@
             <ion-spinner icon="spiral" ng-show="loading"></ion-spinner>
         </div>
 
+
         <!-- Main Content -->
         <ion-list ng-show="docs.length" id="home-list4" class=" ">
             <ion-item ng-repeat="file in docs" ui-sref="hymn({id: file._id})">{{file.hymn_number}}: {{file.title}}</ion-item>
@@ -25,7 +26,10 @@
             </div>
             <br>
             <p>
-                Hey thanks for using the app! Shoot me an email with any questions you might have. <br>
+                Search any hymn by entering the number, title, or keywords into the search bar.
+            </p>
+            <p>
+                Thanks for using the app! Shoot me an email with any questions you might have. <br>
                 - <a href="#" onclick="window.open('http://www.kingnebby.com', '_system', 'location=yes'); return false;">Dan Villa</a><br>
             </p>
             <p class="selectable">

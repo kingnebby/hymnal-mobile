@@ -1,9 +1,12 @@
 # Ionic Hymnal App #
 > Provides hymns on your mobile device.
 
+Uses the repos provided by the [Hardy Boys](https://github.com/the-hardy-boys) to serve the Trinity Hymnal to mobile devices.
 
 ## Setup ##
-Uh. install ionic, npm, and then,
+
+Install [ionic](http://ionicframework.com/getting-started/)
+
 ```bash
 ionic serve
 ```
